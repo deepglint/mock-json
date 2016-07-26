@@ -17,4 +17,4 @@ GET     /public/*filepath                       Static.Serve("public")
 
 GET		/api/device/restart						Static.Serve("public","json/restart.json")
 
-GET		/api/sensorinfo/a							Static.Serve("public","json/sensorinfo.json")
+GET		/api/info/*								Static.Serve("public","json/sensorinfo.json")
