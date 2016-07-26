@@ -2,6 +2,12 @@ package app
 
 import "github.com/revel/revel"
 
+import (
+	"io/ioutil"
+	"log"
+	"path"
+)
+
 func init() {
 	// Filters is the default set of global filters.
 	revel.Filters = []revel.Filter{
@@ -35,4 +41,13 @@ var HeaderFilter = func(c *revel.Controller, fc []revel.Filter) {
 	c.Response.Out.Header().Add("X-Content-Type-Options", "nosniff")
 
 	fc[0](c, fc[1:]) // Execute the next filter stage.
+}
+
+func GetJson() string {
+	b, err := ioutil.ReadFile(path.Join(revel.AppPath, "../", "fake.json"))
+	if err != nil {
+		log.Println(err.Error())
+	}
+	log.Println(string(b))
+	return string(b)
 }

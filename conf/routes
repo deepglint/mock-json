@@ -13,8 +13,12 @@ GET     /favicon.ico                            404
 GET     /public/*filepath                       Static.Serve("public")
 
 # Catch all
-*       /:controller/:action                    :controller.:action
+#*       /:controller/:action                    :controller.:action
 
-GET		/api/device/restart						Static.Serve("public","json/restart.json")
+#GET		/api/device/restart						Static.Serve("public","json/restart.json")
 
-GET		/api/info/*								Static.Serve("public","json/sensorinfo.json")
+#GET		/api/info/*								Static.Serve("public","json/sensorinfo.json")
+
+GET			/api/:id 								Api.GetMock
+
+GET 		/api/device/:id 						Api.GetMock
